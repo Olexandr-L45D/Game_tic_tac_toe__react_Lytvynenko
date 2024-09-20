@@ -1,11 +1,16 @@
 
 import css from './App.module.css'
+import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react"
+
+// const Navigation = lazy(() => import("../Navigation/Navigation"));
+// const HomePage = lazy(() => import("../../pages/HomePage"));
 import React, { useEffect } from "react";
 import WrapperGeneral from "../WrapperGeneral/WrapperGeneral"
 import ContactForm from "../ContactForm/ContactForm"
 import SearchBox from "../SearchBox/SearchBox"
 import ContactList from "../ContactList/ContactList"
-import { fetchContact } from '../../redux/contactsOps'
+import { fetchContact } from '../../redux/contacts/operations'
 import { useDispatch, useSelector } from 'react-redux';
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
@@ -22,7 +27,21 @@ export default function App() {
 
   return (
     <WrapperGeneral>
-      <h1 className={css.title}>Phonebook and HTTP</h1>
+      <Suspense fallback={<div>LOADING list of movies...</div>}>
+        <Navigation />
+      </Suspense>
+      <h1 className={css.title}>My phone contacts</h1>
+      {/* <Suspense fallback={<div>LOADING Ditails...</div>}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path='/movies' element={<MaviesPage />} />
+          <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense> */}
       <ContactForm />
       {loading && <Loader>Loading message</Loader>}
       {error && <Error>Error message</Error>}
