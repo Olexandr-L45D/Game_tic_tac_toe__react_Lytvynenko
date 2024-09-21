@@ -1,0 +1,9 @@
+/* style */
+.cartTitle {
+    padding: 2px;
+    margin: 2px;
+    color: black;
+    font-size: 1em;
+    font-weight: 600;
+    line-height: 1;
+}
