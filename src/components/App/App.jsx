@@ -8,6 +8,8 @@ const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() => import("../../pages/RegistrationPage/RegistrationPage"));
 const MaviesPage = lazy(() => import("../../pages/MaviesPage/MaviesPage"));
+const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
+
 import React, { useEffect } from "react";
 import WrapperGeneral from "../WrapperGeneral/WrapperGeneral"
 import ContactForm from "../ContactForm/ContactForm"
@@ -42,7 +44,7 @@ export default function App() {
           <Route path='/register' element={<RestrictedRoute redirectTo='/contacts' component={<RegistrationPage />} />} />
           <Route path='/login' element={<RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />} />
           <Route path='/contacts' element={<PrivateRoute redirectTo='/login' component={<MaviesPage />} />} />
-
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       <ContactForm />

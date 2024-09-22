@@ -67,7 +67,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://task-manager-api.goit.global/';
 
-// Utility to add JWT
+// Utility to add JWT - (token)
 const setAuthHeader = (token) => {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };

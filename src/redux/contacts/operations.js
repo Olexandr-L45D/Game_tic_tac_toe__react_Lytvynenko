@@ -2,7 +2,9 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-axios.defaults.baseURL = "https://66ea54bb55ad32cda478635a.mockapi.io";
+// axios.defaults.baseURL = "https://66ea54bb55ad32cda478635a.mockapi.io";
+axios.defaults.baseURL = "https://connections-api.goit.global/";
+
 
 export const fetchContact = createAsyncThunk("contacts/fetchAll",
     // in fetchContact Використовуємо символ підкреслення як ім'я першого параметра, тому що в цій операції він нам не потрібен ( а пусто не можна залишати!)
