@@ -3,8 +3,11 @@ import css from './App.module.css'
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react"
 
-// const Navigation = lazy(() => import("../Navigation/Navigation"));
-// const HomePage = lazy(() => import("../../pages/HomePage"));
+const Navigation = lazy(() => import("../Navigation/Navigation"));
+const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
+const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
+const RegistrationPage = lazy(() => import("../../pages/RegistrationPage/RegistrationPage"));
+const MaviesPage = lazy(() => import("../../pages/MaviesPage/MaviesPage"));
 import React, { useEffect } from "react";
 import WrapperGeneral from "../WrapperGeneral/WrapperGeneral"
 import ContactForm from "../ContactForm/ContactForm"
@@ -12,6 +15,8 @@ import SearchBox from "../SearchBox/SearchBox"
 import ContactList from "../ContactList/ContactList"
 import { fetchContact } from '../../redux/contacts/operations'
 import { useDispatch, useSelector } from 'react-redux';
+import { RestrictedRoute } from '../'
+import { PrivateRoute } from '../'
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 
@@ -31,17 +36,15 @@ export default function App() {
         <Navigation />
       </Suspense>
       <h1 className={css.title}>My phone contacts</h1>
-      {/* <Suspense fallback={<div>LOADING Ditails...</div>}>
+      <Suspense fallback={<div>LOADING Ditails...</div>}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path='/movies' element={<MaviesPage />} />
-          <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
-            <Route path="cast" element={<MovieCast />} />
-            <Route path="reviews" element={<MovieReviews />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
+          <Route path='/register' element={<RestrictedRoute redirectTo='/contacts' component={<RegistrationPage />} />} />
+          <Route path='/login' element={<RestrictedRoute redirectTo='/contacts' component={<LoginPage />} />} />
+          <Route path='/contacts' element={<PrivateRoute redirectTo='/login' component={<MaviesPage />} />} />
+
         </Routes>
-      </Suspense> */}
+      </Suspense>
       <ContactForm />
       {loading && <Loader>Loading message</Loader>}
       {error && <Error>Error message</Error>}
@@ -52,6 +55,13 @@ export default function App() {
 };
 
 
+// {/* <Route path='/movies/:movieId' element={<MovieDetailsPage />} >
+//   <Route path="cast" element={<MovieCast />} />
+//   <Route path="reviews" element={<MovieReviews />} />
+
+// {/* <Route path='/movies' element={<MaviesPage />} /> */}
+// </Route> */}
+// {/* <Route path="*" element={<NotFoundPage />} /> */}
 // return (
 //   <main className={css.container}>
 //     <h1>HTTP requests with Redux</h1>
