@@ -15,8 +15,8 @@ import SearchBox from "../SearchBox/SearchBox"
 import ContactList from "../ContactList/ContactList"
 import { fetchContact } from '../../redux/contacts/operations'
 import { useDispatch, useSelector } from 'react-redux';
-import { RestrictedRoute } from '../'
-import { PrivateRoute } from '../'
+import { RestrictedRoute } from '../../components/RestrictedRoute'
+import { PrivateRoute } from '../../components/PrivateRoute'
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 

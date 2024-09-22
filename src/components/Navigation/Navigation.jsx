@@ -14,8 +14,11 @@ export default function Navigation() {
                 <NavLink to="/" className={newLinkClass}>
                     Home
                 </NavLink>
-                <NavLink to="/movies" className={newLinkClass}>
-                    Movies
+                <NavLink to="/register" className={newLinkClass}>
+                    Registration
+                </NavLink>
+                <NavLink to="/login" className={newLinkClass}>
+                    Authentication
                 </NavLink>
             </nav>
         </header>
