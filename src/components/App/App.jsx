@@ -1,7 +1,7 @@
 
-import css from './App.module.css'
+import css from './App.module.css';
 import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react"
+import { lazy, Suspense } from "react";
 
 const Navigation = lazy(() => import("../Navigation/Navigation"));
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
@@ -11,14 +11,15 @@ const MaviesPage = lazy(() => import("../../pages/MaviesPage/MaviesPage"));
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 
 import React, { useEffect } from "react";
-import WrapperGeneral from "../WrapperGeneral/WrapperGeneral"
-import ContactForm from "../ContactForm/ContactForm"
-import SearchBox from "../SearchBox/SearchBox"
-import ContactList from "../ContactList/ContactList"
-import { fetchContact } from '../../redux/contacts/operations'
+import WrapperGeneral from "../WrapperGeneral/WrapperGeneral";
+import ContactForm from "../ContactForm/ContactForm";
+import SearchBox from "../SearchBox/SearchBox";
+import ContactList from "../ContactList/ContactList";
+import LoginList from "../LoginList/LoginList"
+import { fetchContact } from '../../redux/contacts/operations';
 import { useDispatch, useSelector } from 'react-redux';
-import { RestrictedRoute } from '../../components/RestrictedRoute'
-import { PrivateRoute } from '../../components/PrivateRoute'
+import { RestrictedRoute } from '../../components/RestrictedRoute';
+import { PrivateRoute } from '../../components/PrivateRoute';
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 
@@ -47,11 +48,13 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
+      <LoginList />
       <ContactForm />
       {loading && <Loader>Loading message</Loader>}
       {error && <Error>Error message</Error>}
       <SearchBox />
       <ContactList />
+
     </WrapperGeneral>
   )
 };

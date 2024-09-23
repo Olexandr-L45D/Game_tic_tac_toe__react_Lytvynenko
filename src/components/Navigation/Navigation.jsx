@@ -15,10 +15,10 @@ export default function Navigation() {
                     Home
                 </NavLink>
                 <NavLink to="/register" className={newLinkClass}>
-                    Registration
+                    Register
                 </NavLink>
                 <NavLink to="/login" className={newLinkClass}>
-                    Authentication
+                    Log In
                 </NavLink>
             </nav>
         </header>

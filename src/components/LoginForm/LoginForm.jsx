@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import { addContact } from '../../redux/contacts/operations'
+import { logIn } from '../../redux/auth/operations'
 // import { useDispatch, useSelector } from "react-redux";
 // import { addContact, selectContacts } from '../../redux/contactsOps'
 
@@ -20,30 +20,29 @@ export default function LoginForm() {
 
     const dispatch = useDispatch();
     const handleSubmit = (values, actions) => {
-        dispatch(addContact(values));
+        dispatch(logIn(values));
         actions.resetForm();
     };
     return (
         <div className={css.item}>
             <Formik initialValues={{
                 // login, passvord
-
-                name: " ",
-                number: " "
+                login: " ",
+                passvord: " "
             }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
                 <Form>
                     <div className={css.items}>
-                        <label className={css.label}  >Name</label>
-                        <Field className={css.inp} type="text" name="name" placeholder="Enter text..." />
-                        <ErrorMessage className={css.messag} name="name" component="span" />
+                        <label className={css.label}  >Email</label>
+                        <Field className={css.inp} type="text" name="login" placeholder="Enter login..." />
+                        <ErrorMessage className={css.messag} name="login" component="span" />
                     </div>
                     <div className={css.items}>
-                        <label className={css.label} >Number</label>
-                        <Field className={css.inp} type="text" name="number" placeholder="Enter text..." />
-                        <ErrorMessage className={css.messag} name="number" component="span" />
+                        <label className={css.label} >Password</label>
+                        <Field className={css.inp} type="text" name="passvord" placeholder="Enter text..." />
+                        <ErrorMessage className={css.messag} name="passvord" component="span" />
                     </div>
                     <div className={css.btn}>
-                        <button className={css.addContact} type="submit">Add contact</button>
+                        <button className={css.LoginForm} type="submit">Log In</button>
                     </div>
                 </Form>
             </Formik>
