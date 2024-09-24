@@ -1,11 +1,10 @@
-// LoginForm
-import css from "./LoginForm.module.css"
+import css from "./RegistrationForm.module.css"
 import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
-import { logIn } from '../../redux/auth/operations'
+import { register } from '../../redux/auth/operations'
 
-export default function LoginForm() {
+export default function RegistrationForm() {
 
     const FeedbackSchema = Yup.object().shape({
         name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
@@ -16,26 +15,32 @@ export default function LoginForm() {
 
     const handleSubmit = (values, actions) => {
         console.log(values);
-        dispatch(logIn(values));
+        dispatch(register(values));
         actions.resetForm();
     };
     return (
         <div className={css.item}>
             <Formik initialValues={{
+                name: " ",
                 email: " ",
-                password: " "
+                password: " ",
             }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
                 <Form>
                     <div className={css.items}>
+                        <label className={css.label}  >Name</label>
+                        <Field className={css.inp} type="name" name="name" placeholder="Enter name..." />
+                    </div>
+                    <div className={css.items}>
                         <label className={css.label}  >Email</label>
-                        <Field className={css.inp} type="email" name="email" placeholder="Enter login..." />
+                        <Field className={css.inp} type="email" name="email" placeholder="Enter email..." />
                     </div>
                     <div className={css.items}>
                         <label className={css.label} >Password</label>
-                        <Field className={css.inp} type="password" name="password" placeholder="Enter text..." />
+                        <Field className={css.inp} type="password" name="password" placeholder="Enter password..." />
                     </div>
+
                     <div className={css.btn}>
-                        <button className={css.LoginForm} type="submit">Log In</button>
+                        <button className={css.regForm} type="submit">Register</button>
                     </div>
                 </Form>
             </Formik>

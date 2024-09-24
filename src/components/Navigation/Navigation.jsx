@@ -9,7 +9,7 @@ const newLinkClass = ({ isActive }) => {
     return clsx(css.link, isActive && css.active);
 };
 
-export default function Navigation() {
+export const Navigation = () => {
     const isLoggedIn = useSelector(selectIsLoggedIn);
     return (
 
@@ -17,6 +17,7 @@ export default function Navigation() {
             <NavLink to="/" className={newLinkClass}>
                 Home
             </NavLink>
+
             {isLoggedIn && (<NavLink to="/contacts" className={newLinkClass}>
                 Contacts
             </NavLink>)}
@@ -25,6 +26,7 @@ export default function Navigation() {
 
     );
 };
+
 
 
 
