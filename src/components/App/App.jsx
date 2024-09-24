@@ -3,7 +3,6 @@ import css from './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
-const Navigation = lazy(() => import("../Navigation/Navigation"));
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
 const RegistrationPage = lazy(() => import("../../pages/RegistrationPage/RegistrationPage"));
@@ -22,22 +21,20 @@ import { RestrictedRoute } from '../../components/RestrictedRoute';
 import { PrivateRoute } from '../../components/PrivateRoute';
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
-
+import { selectIsRefreshing } from '../../redux/auth/selectors';
 
 export default function App() {
   const loading = useSelector((state) => state.contacts.loading);
   const error = useSelector((state) => state.contacts.error);
   const dispatch = useDispatch();
-
+  const isRefreshing = useSelector(selectIsRefreshing);
+  // запит на ТОКЕН isRefreshing
   useEffect(() => {
     dispatch(fetchContact());
   }, [dispatch]);
 
-  return (
+  return isRefreshing ? (<b>Refreshing user ...</b>) : (
     <WrapperGeneral>
-      <Suspense fallback={<div>LOADING list of movies...</div>}>
-        <Navigation />
-      </Suspense>
       <h1 className={css.title}>My phone contacts</h1>
       <Suspense fallback={<div>LOADING Ditails...</div>}>
         <Routes>
