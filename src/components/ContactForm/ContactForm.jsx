@@ -1,5 +1,6 @@
 import css from "./ContactForm.module.css"
 import { Formik, Form, Field } from 'formik';
+// import { useId } from "react";
 import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
@@ -8,9 +9,6 @@ import { addContact } from '../../redux/contacts/operations'
 // import { addContact, selectContacts } from '../../redux/contactsOps'
 
 export default function ContactForm() {
-    // const nameFieldId = useId();
-    // const numberFieldId = useId();
-    //   const items = useSelector(selectContacts);
 
     const FeedbackSchema = Yup.object().shape({
         name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
