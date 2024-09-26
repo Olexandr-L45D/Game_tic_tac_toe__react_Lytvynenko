@@ -22,9 +22,9 @@ export const fetchContact = createAsyncThunk("contacts/fetchAll",
 
 // addContact
 export const addContact = createAsyncThunk("contacts/addContact",
-    async (newContact, thunkAPI) => {
+    async (_, thunkAPI) => {
         try {
-            const response = await axios.post("/contacts", newContact);
+            const response = await axios.post("/contacts");
             return response.data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);
@@ -32,7 +32,8 @@ export const addContact = createAsyncThunk("contacts/addContact",
     }
 
 );
-
+// async (newContact, thunkAPI) => {
+// const response = await axios.post("/contacts", newContact);
 export const deleteContact = createAsyncThunk(
     "contacts/deleteContact",
     async (contactId, thunkAPI) => {
@@ -45,6 +46,7 @@ export const deleteContact = createAsyncThunk(
     }
 );
 
+// const res = await axios.delete('/contacts/{contactId}');
 //тут в фалі запитів це оголошення 3 операції (1-ша - запит на базовий УРЛ для відмалювання всих контактів - axios.defaults.baseURL, addContact, deleteContact)
 // "tasks/fetchAll/pending" - початок запиту
 // "tasks/fetchAll/fulfilled" - успішне завершення запиту

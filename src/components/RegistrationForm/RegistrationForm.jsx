@@ -3,7 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { register } from '../../redux/auth/operations'
-
+// register - запит на БЕКенд який повертає обєкт з даннними для регістрації (name: " ",email password)
+//  Ivan2@mail.com.ua,  Petrov@mail.com
 export default function RegistrationForm() {
 
     const FeedbackSchema = Yup.object().shape({

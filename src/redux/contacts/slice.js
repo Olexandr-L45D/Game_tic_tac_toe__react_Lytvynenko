@@ -2,8 +2,7 @@
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { fetchContact, addContact, deleteContact } from './operations';
 import { selectStatusFilterName, selectStatusFilterNumber } from '../filters/slice';
-// export const selectContact = (state) => state.locale.items; // повертає шматок стану зі слайсу
-// додаю тут в обєкт початкового стану:loading: false, error: null ддя управління станом Лоадінгу при загрузці та Ерор при помилці
+
 const slice = createSlice({
     name: "contacts",
     initialState: {
@@ -63,6 +62,11 @@ export const selectOutContacts = createSelector([selectContacts, selectStatusFil
 });
 
 export default slice.reducer;
+
+
+
+
+
 // console.log(slice.reducer);
 
 // return (contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())))
