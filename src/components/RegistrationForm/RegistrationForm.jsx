@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { register } from '../../redux/auth/operations'
 // register - запит на БЕКенд який повертає обєкт з даннними для регістрації (name: " ",email password)
-//  Ivan2@mail.com.ua,  Petrov@mail.com
+//  Ivan2@mail.com.ua,  Petrov@mail.com  autoComplete="off"
 export default function RegistrationForm() {
 
     const FeedbackSchema = Yup.object().shape({
@@ -26,7 +26,7 @@ export default function RegistrationForm() {
                 email: " ",
                 password: " ",
             }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
-                <Form>
+                <Form autoComplete="off">
                     <div className={css.items}>
                         <label className={css.label}  >Name</label>
                         <Field className={css.inp} type="name" name="name" placeholder="Enter name..." />

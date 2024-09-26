@@ -7,27 +7,21 @@ import "./index.css";
 import App from './components/App/App';
 // 1. Імпортуємо провайдер
 import { Provider } from 'react-redux'
-// 2. Імпортуємо створений раніше стор, який зберігається в файлі redux/store
+// 2. Імпортуємо створений раніше стор, який зберігається в файлі redux/filters/store
 // import { store, persistor } from "../src/redux/store";
-import { store } from "../src/redux/filters/store";
+import { PersistGate } from "redux-persist/integration/react";
+import { store, persistor } from "../src/redux/filters/store";
 import { BrowserRouter } from 'react-router-dom';
-// import { PersistGate } from 'redux-persist/integration/react'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <PersistGate persistor={persistor} loading={null}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
-
-// {/* <React.StrictMode>
-//   <Provider store={store}>
-//     <PersistGate loading={null} persistor={persistor}>
-//       <App />
-//     </PersistGate>
-//   </Provider>
-// </React.StrictMode> */}

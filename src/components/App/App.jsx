@@ -12,13 +12,14 @@ const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 
 import React, { useEffect } from "react";
 import { Layout } from "../Layout/Layout";
+// import { Toaster } from "react-hot-toast";
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
 import { fetchContact } from '../../redux/contacts/operations';
 import { refreshUser } from '../../redux/auth/operations';
-import { RestrictedRoute } from '../../components/RestrictedRoute';
-import { PrivateRoute } from '../../components/PrivateRoute';
+import RestrictedRoute from '../../components/RestrictedRoute';
+import PrivateRoute from '../../components/PrivateRoute';
 import Loader from "../Loader/Loader";
 import Error from "../Error/Error";
 import { selectIsRefreshing } from '../../redux/auth/selectors';
@@ -51,7 +52,7 @@ export default function App() {
       {error && <Error>Error message</Error>}
       <SearchBox />
       <ContactList />
-
+      {/* <Toaster /> */}
     </Layout>
   )
 };

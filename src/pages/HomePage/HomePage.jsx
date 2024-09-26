@@ -10,7 +10,7 @@ export default function HomePage() {
         <main>
             <h3 className={css.cartTitle}>Home</h3>
             <p>This is my prodgect of Card contact</p>
-            <p>Task manager welcome page{' '}</p>
+
         </main>
     );
 };
