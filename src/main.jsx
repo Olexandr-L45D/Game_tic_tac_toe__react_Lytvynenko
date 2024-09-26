@@ -10,7 +10,7 @@ import { Provider } from 'react-redux'
 // 2. Імпортуємо створений раніше стор, який зберігається в файлі redux/filters/store
 // import { store, persistor } from "../src/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
-import { store, persistor } from "../src/redux/filters/store";
+import { store, persistor } from "../src/redux/store";
 import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

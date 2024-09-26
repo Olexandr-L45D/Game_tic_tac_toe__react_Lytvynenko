@@ -26,7 +26,7 @@ export default function LoginForm() {
                 email: " ",
                 password: " "
             }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
-                <Form autoComplete="off">
+                <Form >
                     <div className={css.items}>
                         <label className={css.label}  >Email</label>
                         <Field className={css.inp} type="email" name="email" placeholder="Enter login..." />

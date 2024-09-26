@@ -1,6 +1,6 @@
 // contacts - operattions
-import axios from "axios";
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import axios from "../auth/operations";
+import { createAsyncThunk } from '@reduxjs/toolkit'
 
 // axios.defaults.baseURL = "https://66ea54bb55ad32cda478635a.mockapi.io";
 // axios.defaults.baseURL = "https://connections-api.goit.global/";

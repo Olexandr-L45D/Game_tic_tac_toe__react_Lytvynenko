@@ -26,7 +26,7 @@ export default function RegistrationForm() {
                 email: " ",
                 password: " ",
             }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
-                <Form autoComplete="off">
+                <Form >
                     <div className={css.items}>
                         <label className={css.label}  >Name</label>
                         <Field className={css.inp} type="name" name="name" placeholder="Enter name..." />

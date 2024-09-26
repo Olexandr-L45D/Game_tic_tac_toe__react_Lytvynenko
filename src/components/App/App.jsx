@@ -46,16 +46,16 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
-
-      <ContactForm />
-      {loading && <Loader>Loading message</Loader>}
-      {error && <Error>Error message</Error>}
-      <SearchBox />
-      <ContactList />
-      {/* <Toaster /> */}
     </Layout>
   )
 };
+
+
+// {/* <ContactForm />
+// { loading && <Loader>Loading message</Loader> }
+// { error && <Error>Error message</Error> }
+//       <SearchBox />
+//       <ContactList /> */}
 
 // потім додати isRefreshing
 // isRefreshing ? (<b>Refreshing user ...</b>) : 

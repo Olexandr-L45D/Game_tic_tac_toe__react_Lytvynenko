@@ -1,7 +1,7 @@
 // contactsSlice.js (це окрема локаль - locale-slice)
 import { createSlice, createSelector } from '@reduxjs/toolkit';
 import { fetchContact, addContact, deleteContact } from './operations';
-import { selectStatusFilterName, selectStatusFilterNumber } from '../filters/slice';
+
 import { logOut } from '../auth/operations';
 
 
@@ -60,12 +60,6 @@ const slice = createSlice({
                 state.error = null;
             });
     },
-});
-
-
-export const selectContacts = (state) => state.contacts.items;
-export const selectOutContacts = createSelector([selectContacts, selectStatusFilterName, selectStatusFilterNumber], (contacts, filter) => {
-    return (contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())) && contacts.filter(contact => contact.number.toLowerCase().includes(filter.toLowerCase())))
 });
 
 export default slice.reducer;
