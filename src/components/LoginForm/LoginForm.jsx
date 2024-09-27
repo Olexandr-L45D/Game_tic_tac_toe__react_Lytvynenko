@@ -1,17 +1,12 @@
 // LoginForm
 import css from "./LoginForm.module.css"
 import { Formik, Form, Field } from 'formik';
-import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { logIn } from '../../redux/auth/operations';
 // import { selectIsLoading } from '../../redux/auth/selectors'
 
 export default function LoginForm() {
 
-    const FeedbackSchema = Yup.object().shape({
-        name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
-        number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
-    });
     const dispatch = useDispatch();
     // const isLoading = useSelector(selectIsLoading);
 
@@ -25,7 +20,7 @@ export default function LoginForm() {
             <Formik initialValues={{
                 email: " ",
                 password: " "
-            }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
+            }} onSubmit={handleSubmit} >
                 <Form >
                     <div className={css.items}>
                         <label className={css.label}  >Email</label>

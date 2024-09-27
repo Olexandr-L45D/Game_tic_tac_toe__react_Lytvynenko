@@ -1,16 +1,10 @@
 import css from "./RegistrationForm.module.css"
 import { Formik, Form, Field } from 'formik';
-import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { register } from '../../redux/auth/operations'
-// register - запит на БЕКенд який повертає обєкт з даннними для регістрації (name: " ",email password)
+// register - запит на БЕКенд який повертає обєкт з даннними для регістрації (name: " ",email, password)
 //  Ivan2@mail.com.ua,  Petrov@mail.com  autoComplete="off"
 export default function RegistrationForm() {
-
-    const FeedbackSchema = Yup.object().shape({
-        name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
-        number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
-    });
 
     const dispatch = useDispatch();
 
@@ -25,7 +19,7 @@ export default function RegistrationForm() {
                 name: " ",
                 email: " ",
                 password: " ",
-            }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
+            }} onSubmit={handleSubmit} >
                 <Form >
                     <div className={css.items}>
                         <label className={css.label}  >Name</label>
