@@ -3,8 +3,6 @@ import { Formik, Form, Field } from 'formik';
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addContact } from '../../redux/contacts/operations'
-// import { useDispatch, useSelector } from "react-redux";
-// import { addContact, selectContacts } from '../../redux/contactsOps'
 
 export default function ContactForm() {
 
@@ -38,6 +36,8 @@ export default function ContactForm() {
         </div>
     );
 };
+
+
 
 // import * as Yup from "yup";
 // }} onSubmit = { handleSubmit } validationSchema = { FeedbackSchema } >

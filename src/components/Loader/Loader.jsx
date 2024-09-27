@@ -6,7 +6,7 @@ export default function Loader({ children }) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setDots((dots) => (dots.length < 3 ? dots + "." : ""));
+            setDots((dots) => (dots.length < 3 ? dots + "enter text" : ""));
         }, 250);
 
         return () => clearInterval(interval);
