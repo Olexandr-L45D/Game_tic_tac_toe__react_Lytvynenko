@@ -4,7 +4,7 @@ import { Formik, Form, Field } from 'formik';
 import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { logIn } from '../../redux/auth/operations';
-import { selectIsLoading } from '../../redux/auth/selectors'
+// import { selectIsLoading } from '../../redux/auth/selectors'
 
 export default function LoginForm() {
 
@@ -13,7 +13,7 @@ export default function LoginForm() {
         number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
     });
     const dispatch = useDispatch();
-    const isLoading = useSelector(selectIsLoading);
+    // const isLoading = useSelector(selectIsLoading);
 
     const handleSubmit = (values, actions) => {
         console.log(values);
@@ -36,10 +36,12 @@ export default function LoginForm() {
                         <Field className={css.inp} type="password" name="password" placeholder="Enter text..." />
                     </div>
                     <div className={css.btn}>
-                        <button className={css.LoginForm} type="submit" disabled={isLoading}>Log In</button>
+                        <button className={css.LoginForm} type="submit" >Log In</button>
                     </div>
                 </Form>
             </Formik>
         </div>
     );
 };
+
+{/* <button className={css.LoginForm} type="submit" disabled={isLoading}>Log In</button> */ }

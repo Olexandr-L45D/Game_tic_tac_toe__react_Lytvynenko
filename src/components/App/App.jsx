@@ -3,6 +3,7 @@ import css from './App.module.css';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { lazy, Suspense } from "react";
+import React, { useEffect } from "react";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
@@ -10,23 +11,14 @@ const RegistrationPage = lazy(() => import("../../pages/RegistrationPage/Registr
 const ContactsPage = lazy(() => import("../../pages/ContactsPage/ContactsPage"));
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 
-import React, { useEffect } from "react";
 import { Layout } from "../Layout/Layout";
-// import { Toaster } from "react-hot-toast";
-import ContactForm from "../ContactForm/ContactForm";
-import SearchBox from "../SearchBox/SearchBox";
-import ContactList from "../ContactList/ContactList";
-import { fetchContact } from '../../redux/contacts/operations';
 import { refreshUser } from '../../redux/auth/operations';
 import RestrictedRoute from '../../components/RestrictedRoute';
 import PrivateRoute from '../../components/PrivateRoute';
-import Loader from "../Loader/Loader";
-import Error from "../Error/Error";
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 
 export default function App() {
-  const loading = useSelector((state) => state.contacts.loading);
-  const error = useSelector((state) => state.contacts.error);
+
   const dispatch = useDispatch();
   const isRefreshing = useSelector(selectIsRefreshing);
   // запит на ТОКЕН isRefreshing
@@ -51,11 +43,6 @@ export default function App() {
 };
 
 
-// {/* <ContactForm />
-// { loading && <Loader>Loading message</Loader> }
-// { error && <Error>Error message</Error> }
-//       <SearchBox />
-//       <ContactList /> */}
 
 // потім додати isRefreshing
 // isRefreshing ? (<b>Refreshing user ...</b>) : 

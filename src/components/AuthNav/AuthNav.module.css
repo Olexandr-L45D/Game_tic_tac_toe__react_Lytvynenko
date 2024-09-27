@@ -1,12 +1,22 @@
 /*  */
-.link {
-    display: inline-block;
-    text-decoration: none;
-    padding: 12px;
-    font-weight: 700;
-    color: #2a363b;
+.nav {
+    display: flex;
 }
 
-.link.active {
-    color: #e84a5f;
+.logo {
+    font-weight: 700;
+    margin: 0;
+}
+
+.link {
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.active {
+    color: white;
+    background-color: rgb(30, 255, 0);
 }
