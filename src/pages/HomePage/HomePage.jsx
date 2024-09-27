@@ -7,11 +7,14 @@ import css from "./HomePage.module.css"
 export default function HomePage() {
 
     return (
-        <main>
-            <h1 className={css.cartTitle}>Home</h1>
-            <p>This is my contact card</p>
+        <div className={css.container}>
+            <div className={css.card}>
 
-        </main>
+                <h1 className={css.cartTitle}>Contactbook</h1>
+                <h1 className={css.cartText}>Welcom in my contact card</h1>
+
+            </div>
+        </div>
     );
 };
 

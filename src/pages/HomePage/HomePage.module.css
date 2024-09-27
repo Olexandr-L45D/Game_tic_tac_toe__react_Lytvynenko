@@ -1,9 +1,35 @@
 /* style */
+
+.container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: center;
+}
+
 .cartTitle {
+    padding: 2px;
+    margin: 2px;
+    color: rgb(14, 11, 214);
+    font-size: 2em;
+    font-weight: 900;
+    line-height: 2;
+}
+
+.cartText {
     padding: 2px;
     margin: 2px;
     color: black;
     font-size: 1em;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 1;
 }
