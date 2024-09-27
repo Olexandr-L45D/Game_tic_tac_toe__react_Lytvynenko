@@ -1,7 +1,5 @@
 import css from "./ContactForm.module.css"
 import { Formik, Form, Field } from 'formik';
-// import { useId } from "react";
-import * as Yup from "yup";
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addContact } from '../../redux/contacts/operations'
@@ -9,11 +7,6 @@ import { addContact } from '../../redux/contacts/operations'
 // import { addContact, selectContacts } from '../../redux/contactsOps'
 
 export default function ContactForm() {
-
-    const FeedbackSchema = Yup.object().shape({
-        name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
-        number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
-    });
 
     const dispatch = useDispatch();
     const handleSubmit = (values, actions) => {
@@ -25,7 +18,7 @@ export default function ContactForm() {
             <Formik initialValues={{
                 name: " ",
                 number: " "
-            }} onSubmit={handleSubmit} validationSchema={FeedbackSchema}>
+            }} onSubmit={handleSubmit}>
                 <Form>
                     <div className={css.items}>
                         <label className={css.label}  >Name</label>
@@ -46,6 +39,12 @@ export default function ContactForm() {
     );
 };
 
+// import * as Yup from "yup";
+// }} onSubmit = { handleSubmit } validationSchema = { FeedbackSchema } >
+// const FeedbackSchema = Yup.object().shape({
+//     name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
+//     number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
+// });
 // <Form>
 //     <div className={css.items}>
 //         <label className={css.label} htmlFor={nameFieldId} >Name</label>

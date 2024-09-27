@@ -21,3 +21,12 @@
     color: white;
     background-color: rgb(255, 0, 106);
 }
+
+.container {
+    display: flex;
+    text-align: left;
+    justify-content: left;
+    align-items: left;
+    justify-content: left;
+
+}

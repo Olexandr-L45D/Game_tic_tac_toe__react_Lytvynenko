@@ -8,8 +8,8 @@ export default function HomePage() {
 
     return (
         <main>
-            <h3 className={css.cartTitle}>Home</h3>
-            <p>This is my prodgect of Card contact</p>
+            <h1 className={css.cartTitle}>Home</h1>
+            <p>This is my contact card</p>
 
         </main>
     );

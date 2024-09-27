@@ -12,18 +12,17 @@ const newLinkClass = ({ isActive }) => {
 export const Navigation = () => {
     // const isLoggedIn = useSelector(selectIsLoggedIn);
     return (
+        <div className={css.container}>
+            <nav className={css.nav}>
+                <NavLink to="/" className={newLinkClass}>
+                    Home
+                </NavLink>
 
-        <nav className={css.nav}>
-            <NavLink to="/" className={newLinkClass}>
-                Home
-            </NavLink>
-
-            <NavLink to="/contacts" className={newLinkClass}>
-                Contacts
-            </NavLink>
-
-        </nav>
-
+                <NavLink to="/contacts" className={newLinkClass}>
+                    Contacts
+                </NavLink>
+            </nav>
+        </div>
     );
 };
 
