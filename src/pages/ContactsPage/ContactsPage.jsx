@@ -1,3 +1,4 @@
+import css from "./ContactsPage.module.css"
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ContactList from '../../components/ContactList/ContactList';
@@ -20,13 +21,13 @@ export default function ContactsPage() {
     }, [dispatch]);
 
     return (
-        <>
+        <div className={css.cartPage}>
+            <h1 className={css.cartTitle}>Your Contact Card and List</h1>
             <ContactForm />
-            <div>Your Contact List</div>
             <div>{isLoading && 'Request in progress...'}</div>
             <SearchBox />
             <ContactList />
-        </>
+        </div>
     );
 };
 

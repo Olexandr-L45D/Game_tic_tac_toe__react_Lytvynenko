@@ -7,8 +7,12 @@ export default function RegistrationPage() {
 
     return (
         <main>
-            <h3 className={css.cartForm}>RegistrationForm </h3>
-            <RegistrationForm />
+            <div className={css.cartPage}>
+
+                <h3 className={css.cartForm}>RegistrationForm </h3>
+                <RegistrationForm />
+
+            </div>
         </main>
     );
 }

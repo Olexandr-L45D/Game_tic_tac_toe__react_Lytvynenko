@@ -9,7 +9,7 @@ const newLinkClass = ({ isActive }) => {
 
 export const AuthNav = () => {
     return (
-        <div>
+        <div className={css.blokLink}>
             <NavLink className={newLinkClass} to="/register">
                 Register
             </NavLink>

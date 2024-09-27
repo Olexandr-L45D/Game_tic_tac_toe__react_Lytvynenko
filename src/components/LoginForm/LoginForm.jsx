@@ -28,7 +28,7 @@ export default function LoginForm() {
                     </div>
                     <div className={css.items}>
                         <label className={css.label} >Password</label>
-                        <Field className={css.inp} type="password" name="password" placeholder="Enter text..." />
+                        <Field className={css.inp} type="password" name="password" placeholder="Enter password..." />
                     </div>
                     <div className={css.btn}>
                         <button className={css.LoginForm} type="submit" >Log In</button>

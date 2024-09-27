@@ -22,12 +22,12 @@ export default function ContactForm() {
                 <Form>
                     <div className={css.items}>
                         <label className={css.label}  >Name</label>
-                        <Field className={css.inp} type="text" name="name" placeholder="Enter text..." />
+                        <Field className={css.inp} type="text" name="name" placeholder="Enter name..." />
                         <ErrorMessage className={css.messag} name="name" component="span" />
                     </div>
                     <div className={css.items}>
                         <label className={css.label} >Number</label>
-                        <Field className={css.inp} type="text" name="number" placeholder="Enter text..." />
+                        <Field className={css.inp} type="text" name="number" placeholder="Enter number" />
                         <ErrorMessage className={css.messag} name="number" component="span" />
                     </div>
                     <div className={css.btn}>

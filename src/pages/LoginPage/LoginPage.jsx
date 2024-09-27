@@ -7,8 +7,10 @@ export default function LoginPage() {
 
     return (
         <main>
-            <h3 className={css.cartTitle}>LOGIN FORM</h3>
-            <LoginForm />
+            <div className={css.cartPage} >
+                <h1 className={css.cartTitle}>LOGIN FORM</h1>
+                <LoginForm />
+            </div>
         </main>
     );
 }
