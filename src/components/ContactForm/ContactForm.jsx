@@ -3,6 +3,8 @@ import { Formik, Form, Field } from 'formik';
 import { ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
 import { addContact } from '../../redux/contacts/operations'
+import toast, { Toaster } from 'react-hot-toast';
+const notify = () => toast('You added a contact.');
 
 export default function ContactForm() {
 
@@ -29,7 +31,8 @@ export default function ContactForm() {
                         <ErrorMessage className={css.messag} name="number" component="span" />
                     </div>
                     <div className={css.btn}>
-                        <button className={css.addContact} type="submit">Add contact</button>
+                        <button onClick={notify} className={css.addContact} type="submit">Add contact</button>
+                        <Toaster />
                     </div>
                 </Form>
             </Formik>
@@ -39,25 +42,5 @@ export default function ContactForm() {
 
 
 
-// import * as Yup from "yup";
-// }} onSubmit = { handleSubmit } validationSchema = { FeedbackSchema } >
-// const FeedbackSchema = Yup.object().shape({
-//     name: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required("Required"),
-//     number: Yup.string().min(4, "Too Short!").max(50, "Too Long!").required('Required')
-// });
-// <Form>
-//     <div className={css.items}>
-//         <label className={css.label} htmlFor={nameFieldId} >Name</label>
-//         <Field className={css.inp} type="text" name="name" id={nameFieldId} placeholder="Enter text..." />
-//         <ErrorMessage className={css.messag} name="name" component="span" />
-//     </div>
-//     <div className={css.items}>
-//         <label className={css.label} htmlFor={numberFieldId} >Number</label>
-//         <Field className={css.inp} type="text" name="number" id={numberFieldId} placeholder="Enter text..." />
-//         <ErrorMessage className={css.messag} name="number" component="span" />
-//     </div>
-//     <div className={css.btn}>
-//         <button className={css.addContact} type="submit">Add contact</button>
-//     </div>
-// </Form>
+
 

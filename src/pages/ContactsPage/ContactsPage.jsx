@@ -22,7 +22,7 @@ export default function ContactsPage() {
 
     return (
         <div className={css.cartPage}>
-            <h1 className={css.cartTitle}>Your Contact Card and List</h1>
+            <h1 className={css.cartTitle}>Your Contact Card </h1>
             <ContactForm />
             <div>{isLoading && 'Request in progress...'}</div>
             <SearchBox />

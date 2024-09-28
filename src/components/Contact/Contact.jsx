@@ -2,7 +2,9 @@ import css from "./Contact.module.css"
 import { BsFillPersonFill } from "react-icons/bs";
 import { AiFillPhone } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { deleteContact } from '../../redux/contacts/operations'
+import { deleteContact } from '../../redux/contacts/operations';
+import toast, { Toaster } from 'react-hot-toast';
+const notify = () => toast('You Delete a contact.');
 
 export default function Contact({ contact }) {
     const dispatch = useDispatch();
@@ -20,7 +22,7 @@ export default function Contact({ contact }) {
             <button className={css.btn} onClick={handleDelete}>
                 Delete
             </button>
-
+            <Toaster />
         </div>
     );
 };
