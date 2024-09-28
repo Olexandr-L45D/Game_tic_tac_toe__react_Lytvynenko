@@ -31,11 +31,11 @@ export default function RegistrationForm() {
                     </div>
                     <div className={css.items}>
                         <label className={css.label} >Password</label>
-                        <Field className={css.inp} type="password" name="password" placeholder="Enter password..." />
+                        <Field className={css.inp} type="password" name="password" placeholder="Please enter numbers and uppercase letters..." />
                     </div>
 
                     <div className={css.btn}>
-                        <button className={css.regForm} type="submit">Register</button>
+                        <button className={css.regForm} type="submit">Create Account</button>
                     </div>
                 </Form>
             </Formik>

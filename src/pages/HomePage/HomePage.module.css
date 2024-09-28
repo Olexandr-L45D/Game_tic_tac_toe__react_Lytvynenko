@@ -33,3 +33,11 @@
     font-weight: 700;
     line-height: 1;
 }
+
+.cartIcon {
+    width: 80px;
+    height: 80px;
+    margin: 5px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
