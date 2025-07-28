@@ -1,20 +1,17 @@
 // LoginPage.module.css
 import LoginForm from "../../components/LoginForm/LoginForm";
-import css from "./LoginPage.module.css"
-import { useState, useEffect } from "react"
+import css from "./LoginPage.module.css";
 
 export default function LoginPage() {
-
-    return (
-        <main>
-            <div className={css.cartPage} >
-                <h1 className={css.cartTitle}>LOGIN FORM</h1>
-                <LoginForm />
-            </div>
-        </main>
-    );
+  return (
+    <main>
+      <div className={css.cartPage}>
+        <h1 className={css.cartTitle}>LOGIN FORM</h1>
+        <LoginForm />
+      </div>
+    </main>
+  );
 }
-
 
 // const [products, setProduct] = useState([]);
 // const [loading, setLoading] = useState(false);
@@ -34,5 +31,3 @@ export default function LoginPage() {
 //     }
 //     fetchData();
 // }, []);
-
-
