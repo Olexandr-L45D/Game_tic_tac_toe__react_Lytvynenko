@@ -1,5 +1,5 @@
 //GamePage.module.css
-
+import css from "./GamePage.module.css";
 import { useState } from "react";
 import GameTicTacToe from "../../components/GameTicTacToe/GameTicTacToe";
 
@@ -7,7 +7,7 @@ function GamePage() {
   const [showGame, setShowGame] = useState(false);
 
   return (
-    <div>
+    <div className={css.container}>
       <button onClick={() => setShowGame(true)}>Грати у хрестики-нулики</button>
 
       {showGame && (
