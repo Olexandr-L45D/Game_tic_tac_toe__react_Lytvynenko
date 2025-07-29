@@ -60,7 +60,7 @@ const TicTacToeGame = ({
     onEvent?.({ type: "reset" });
   };
 
-  const themeClass = `game-container theme-${settings?.theme || "default"}`;
+  const themeClass = `game_container theme-${settings?.theme || "default"}`;
 
   return (
     <div className={themeClass}>
@@ -81,7 +81,16 @@ const TicTacToeGame = ({
       <div className={css.grid}>
         {board.map((cell, i) => (
           <button key={i} className={css.cell} onClick={() => handleClick(i)}>
-            {cell}
+            {cell === "X" && (
+              <svg className={css.icon}>
+                <use href={`/assets/sprite.svg#${settings?.theme}-x`} />
+              </svg>
+            )}
+            {cell === "O" && (
+              <svg className={css.icon}>
+                <use href={`/assets/sprite.svg#${settings?.theme}-o`} />
+              </svg>
+            )}
           </button>
         ))}
       </div>

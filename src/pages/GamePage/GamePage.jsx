@@ -8,13 +8,15 @@ function GamePage() {
 
   return (
     <div className={css.container}>
-      <button onClick={() => setShowGame(true)}>Грати у хрестики-нулики</button>
+      <button className={css.btn} onClick={() => setShowGame(true)}>
+        Play tic-tac-toe
+      </button>
 
       {showGame && (
         <GameTicTacToe
-          name="Олександр"
+          name="Olexandr"
           age={8}
-          language="uk"
+          language="en"
           settings={{ theme: "forest" }}
         />
       )}

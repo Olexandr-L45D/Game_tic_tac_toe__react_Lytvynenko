@@ -1,0 +1,21 @@
+<!-- sprite.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="pooh-x" viewBox="0 0 100 100">
+    <!-- SVG path for Pooh X -->
+  </symbol>
+  <symbol id="pooh-o" viewBox="0 0 100 100">
+    <!-- SVG path for Pooh O -->
+  </symbol>
+  <symbol id="ariel-x" viewBox="0 0 100 100">
+    <!-- SVG path for Ariel X -->
+  </symbol>
+  <symbol id="ariel-o" viewBox="0 0 100 100">
+    <!-- SVG path for Ariel O -->
+  </symbol>
+  <symbol id="default-x" viewBox="0 0 100 100">
+    <path d="M10,10 L90,90 M90,10 L10,90" stroke="black" strokeWidth="10" />
+  </symbol>
+  <symbol id="default-o" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="40" stroke="black" strokeWidth="10" fill="none" />
+  </symbol>
+</svg>
