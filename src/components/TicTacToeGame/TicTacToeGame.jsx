@@ -1,18 +1,27 @@
-//GameTicTacToe
+//TicTacToeGame
 import { useState, useEffect } from "react";
-import css from "./GameTicTacToe.module.css";
-const imageIcons = {
+import {
+  FcBusinessman,
+  FcBusinesswoman,
+  FcPortraitMode,
+  FcEngineering,
+  FcSupport,
+} from "react-icons/fc";
+import css from "./TicTacToeGame.module.css";
+
+// Об'єкт для зберігання іконок по темах (react-icons)
+const iconComponents = {
   pooh: {
-    x: "/assets/themes/pooh/pooh-x.png",
-    o: "/assets/themes/pooh/pooh-o.png",
+    x: FcBusinessman,
+    o: FcBusinesswoman,
   },
   ariel: {
-    x: "/assets/themes/ariel/ariel-x.png",
-    o: "/assets/themes/ariel/ariel-o.png",
+    x: FcPortraitMode,
+    o: FcEngineering,
   },
   dora: {
-    x: "/assets/themes/dora/dora-x.png",
-    o: "/assets/themes/dora/dora-o.png",
+    x: FcSupport,
+    o: FcBusinessman,
   },
 };
 
@@ -28,6 +37,7 @@ const TicTacToeGame = ({
   const [current, setCurrent] = useState("X");
   const [winner, setWinner] = useState(null);
   const [difficulty, setDifficulty] = useState("easy");
+  const [isCustomDifficulty, setIsCustomDifficulty] = useState(false);
 
   const lines = [
     [0, 1, 2],
@@ -40,8 +50,8 @@ const TicTacToeGame = ({
     [2, 4, 6],
   ];
 
-  // 🔁 Автоматично підлаштовуємо складність під вік
   useEffect(() => {
+    if (!age) return; // Якщо вік ще не визначено
     if (age < 6) setDifficulty("super-easy");
     else if (age < 10) setDifficulty("easy");
     else if (age < 15) setDifficulty("medium");
@@ -63,9 +73,7 @@ const TicTacToeGame = ({
     setBoard(next);
     setWinner(result);
     onEvent?.({ type: "move", board: next, result, currentPlayer: current });
-    if (!result) {
-      setCurrent(current === "X" ? "O" : "X");
-    }
+    if (!result) setCurrent(current === "X" ? "O" : "X");
   };
 
   const reset = () => {
@@ -75,18 +83,13 @@ const TicTacToeGame = ({
     onEvent?.({ type: "reset" });
   };
 
-  const themeClass = `game_container theme_${settings?.theme || "default"}`;
-  const getImageIcon = symbol => {
-    const theme = settings?.theme;
-    return imageIcons[theme]?.[symbol] || null;
-  };
+  const theme = settings?.theme || "default";
+  const themeClass = `game_container theme_${theme}`;
 
-  const getIconId = symbol => {
-    const theme = settings?.theme;
-    const knownThemes = ["pooh", "ariel", "dora"];
-    return knownThemes.includes(theme)
-      ? `${theme}-${symbol}`
-      : `default-${symbol}`;
+  // ⬇️ Функція для отримання іконки з React Icons
+  const getIconComponent = symbol => {
+    const Icon = iconComponents[theme]?.[symbol.toLowerCase()];
+    return Icon ? <Icon size={48} /> : symbol;
   };
 
   return (
@@ -101,20 +104,38 @@ const TicTacToeGame = ({
           </p>
           <p>
             Lang: {language} | Difficulty: {difficulty}
+            {isCustomDifficulty && " (Custom)"}
           </p>
         </div>
+      </div>
+      <div className={css.difficultySelect}>
+        <label>
+          Select difficulty:{" "}
+          <select
+            value={difficulty}
+            onChange={e => {
+              setDifficulty(e.target.value);
+              setIsCustomDifficulty(true);
+            }}
+          >
+            <option value="super-easy">Super Easy</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+        </label>
       </div>
 
       <div className={css.grid}>
         {board.map((cell, i) => (
-          <button key={i} className={css.cell} onClick={() => handleClick(i)}>
-            {cell && getImageIcon(cell) ? (
-              <img src={getImageIcon(cell)} alt={cell} className="icon-img" />
-            ) : (
-              <svg className="icon">
-                <use href={`#${getIconId(cell)}`} />
-              </svg>
-            )}
+          <button
+            key={i}
+            className={`${css.cell} ${
+              css["cell--" + (settings?.theme || "default")]
+            }`}
+            onClick={() => handleClick(i)}
+          >
+            {cell ? getIconComponent(cell) : null}
           </button>
         ))}
       </div>
@@ -135,8 +156,5 @@ const TicTacToeGame = ({
     </div>
   );
 };
-export default TicTacToeGame;
 
-//<svg>
-//<use href="/assets/sprite.svg#pooh-x" />
-//</svg>;
+export default TicTacToeGame;

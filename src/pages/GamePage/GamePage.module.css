@@ -1,49 +1,49 @@
 /* style */
-
 .container {
   width: 100%;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
+  background-color: darkmagenta;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.btn {
-  width: 150px;
-  height: auto;
-  padding: 2px;
-  margin: 2px;
-  background-color: chartreuse;
+
+.themeContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* відстань між шапкою і грою */
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
 }
-.card {
+
+.sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 200px;
 }
 
-.cartTitle {
-  padding: 2px;
-  margin: 2px;
-  color: rgb(14, 11, 214);
-  font-size: 2em;
-  font-weight: 900;
-  line-height: 2;
-}
-
-.cartText {
-  padding: 2px;
-  margin: 2px;
-  color: black;
+.btn {
+  width: 160px;
+  height: 40px;
   font-size: 1em;
-  font-weight: 700;
-  line-height: 1;
+  margin-top: 10px;
 }
 
-.cartIcon {
-  width: 80px;
-  height: 80px;
-  margin: 5px;
-  margin-bottom: 0px;
-  padding: 0px;
+.blok {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  margin-top: 5px;
+  padding: 6px;
+  font-size: 1em;
 }
