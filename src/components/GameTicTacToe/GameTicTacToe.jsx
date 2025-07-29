@@ -60,7 +60,15 @@ const TicTacToeGame = ({
     onEvent?.({ type: "reset" });
   };
 
-  const themeClass = `game_container theme-${settings?.theme || "default"}`;
+  const themeClass = `game_container theme_${settings?.theme || "default"}`;
+
+  const getIconId = symbol => {
+    const theme = settings?.theme;
+    const knownThemes = ["pooh", "ariel", "dora"];
+    return knownThemes.includes(theme)
+      ? `${theme}-${symbol}`
+      : `default-${symbol}`;
+  };
 
   return (
     <div className={themeClass}>
@@ -83,12 +91,12 @@ const TicTacToeGame = ({
           <button key={i} className={css.cell} onClick={() => handleClick(i)}>
             {cell === "X" && (
               <svg className={css.icon}>
-                <use href={`/assets/sprite.svg#${settings?.theme}-x`} />
+                <use href={`/assets/sprite.svg#${getIconId("x")}`} />
               </svg>
             )}
             {cell === "O" && (
               <svg className={css.icon}>
-                <use href={`/assets/sprite.svg#${settings?.theme}-o`} />
+                <use href={`/assets/sprite.svg#${getIconId("o")}`} />
               </svg>
             )}
           </button>
@@ -112,3 +120,7 @@ const TicTacToeGame = ({
   );
 };
 export default TicTacToeGame;
+
+//<svg>
+//<use href="/assets/sprite.svg#pooh-x" />
+//</svg>;
