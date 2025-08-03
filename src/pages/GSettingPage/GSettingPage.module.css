@@ -1,0 +1,50 @@
+/* style */
+.container {
+  width: 852px;
+  height: 393px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("/src/assets/emages/Frame_baground_start.png.png")
+    center/cover no-repeat;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.themeContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 40px; /* відстань між шапкою і грою */
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 16px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 12px;
+  min-width: 200px;
+}
+
+.btn {
+  width: 160px;
+  height: 40px;
+  font-size: 1em;
+  margin-top: 10px;
+}
+
+.blok {
+  display: flex;
+  flex-direction: column;
+}
+
+select {
+  margin-top: 5px;
+  padding: 6px;
+  font-size: 1em;
+}

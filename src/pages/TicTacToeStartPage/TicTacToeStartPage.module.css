@@ -1,15 +1,37 @@
-/* style */
+/* TicTacToeStartPage.module.css */
 .container {
-  width: 100%;
-  min-height: 100vh;
+  position: fixed;
+  top: 40px;
+  left: 0;
+  width: 852px;
+  height: 393px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: darkmagenta;
+  background: url("/src/assets/emages/BacgroundGame.png") center/cover no-repeat;
   padding: 20px;
   box-sizing: border-box;
 }
-
+.container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/src/assets/emages/MaskStars.png") center/cover no-repeat;
+  mix-blend-mode: screen; /* Або lighten */
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+}
+.btnStart {
+  width: 160px;
+  height: 160px;
+  font-size: 1em;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .themeContainer {
   display: flex;
   flex-direction: row;

@@ -1,43 +1,32 @@
 //TicTacToeGame
-import { useState, useEffect } from "react";
-import {
-  FcBusinessman,
-  FcBusinesswoman,
-  FcPortraitMode,
-  FcEngineering,
-  FcSupport,
-} from "react-icons/fc";
+import { useState } from "react";
+import { FcBusinesswoman } from "react-icons/fc";
 import css from "./TicTacToeGame.module.css";
+import Rose from "/assets/images/RoseYellow.png";
+import Princesse from "/assets/images/Princasse.png";
+import Empty from "/assets/images/RectangleNull.png";
+import { WinModal } from "../WinModal/WinModal";
 
-// Об'єкт для зберігання іконок по темах (react-icons)
+// Об'єкт для зберігання іконок по темах (url-images)
 const iconComponents = {
-  pooh: {
-    x: FcBusinessman,
-    o: FcBusinesswoman,
+  rose: {
+    x: Rose,
+    o: Princesse,
   },
-  ariel: {
-    x: FcPortraitMode,
-    o: FcEngineering,
+  princes: {
+    x: Princesse,
+    o: Empty,
   },
   dora: {
-    x: FcSupport,
-    o: FcBusinessman,
+    x: FcBusinesswoman,
+    o: Empty,
   },
 };
 
-const TicTacToeGame = ({
-  name,
-  age,
-  avatarUrl,
-  language,
-  settings,
-  onEvent,
-}) => {
+const TicTacToeGame = ({ settings, onEvent }) => {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [current, setCurrent] = useState("X");
   const [winner, setWinner] = useState(null);
-  const [difficulty, setDifficulty] = useState("easy");
-  const [isCustomDifficulty, setIsCustomDifficulty] = useState(false);
 
   const lines = [
     [0, 1, 2],
@@ -49,14 +38,6 @@ const TicTacToeGame = ({
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  useEffect(() => {
-    if (!age) return; // Якщо вік ще не визначено
-    if (age < 6) setDifficulty("super-easy");
-    else if (age < 10) setDifficulty("easy");
-    else if (age < 15) setDifficulty("medium");
-    else setDifficulty("hard");
-  }, [age]);
 
   const checkWin = b => {
     for (let [a, b1, c] of lines) {
@@ -82,79 +63,74 @@ const TicTacToeGame = ({
     setWinner(null);
     onEvent?.({ type: "reset" });
   };
-
+  const handleRestartGame = () => {
+    reset();
+  };
   const theme = settings?.theme || "default";
   const themeClass = `game_container theme_${theme}`;
 
-  // ⬇️ Функція для отримання іконки з React Icons
   const getIconComponent = symbol => {
-    const Icon = iconComponents[theme]?.[symbol.toLowerCase()];
-    return Icon ? <Icon size={48} /> : symbol;
+    const icon = iconComponents[theme]?.[symbol.toLowerCase()];
+    if (!icon) return symbol;
+    if (typeof icon === "function") {
+      const Icon = icon;
+      return <Icon size={60} />;
+    }
+    return <img src={icon} alt={symbol} style={{ width: 65, height: 65 }} />;
   };
 
   return (
-    <div className={themeClass}>
-      <div className={css.header}>
-        {avatarUrl && (
-          <img src={avatarUrl} alt="avatar" className={css.avatar} />
-        )}
-        <div className={css.user_info}>
-          <p>
-            {name}, {age} y.o.
+    <main className={css.wrapper}>
+      <aside className={css.player}>
+        {getIconComponent("x")}
+        <span className={css.label}>You : X</span>
+      </aside>
+
+      <section className={themeClass}>
+        <section className={css.gridWrapper}>
+          <div className={css.gridOverlay}></div>
+          <div className={css.grid}>
+            {board.map((cell, i) => (
+              <button
+                key={i}
+                className={`${css.cell} ${css["cell--" + theme]}`}
+                onClick={() => handleClick(i)}
+                aria-label={`Cell ${i + 1}`}
+              >
+                {cell ? getIconComponent(cell) : null}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        <div className={css.statusWrapper}>
+          <p className={css.status}>
+            {winner
+              ? winner === "Draw"
+                ? "🤝 It's a draw!"
+                : winner === "X"
+                ? "🏆 You won!"
+                : "😞 You lost!"
+              : `🟢 Next: ${current}`}
           </p>
-          <p>
-            Lang: {language} | Difficulty: {difficulty}
-            {isCustomDifficulty && " (Custom)"}
-          </p>
+
+          {winner === "X" && <WinModal onRestart={handleRestartGame} />}
+          {winner && winner !== "X" && (
+            <button className={css.retryBtn} onClick={handleRestartGame}>
+              🔁 Try again
+            </button>
+          )}
         </div>
-      </div>
-      <div className={css.difficultySelect}>
-        <label>
-          Select difficulty:{" "}
-          <select
-            value={difficulty}
-            onChange={e => {
-              setDifficulty(e.target.value);
-              setIsCustomDifficulty(true);
-            }}
-          >
-            <option value="super-easy">Super Easy</option>
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
-        </label>
-      </div>
+      </section>
 
-      <div className={css.grid}>
-        {board.map((cell, i) => (
-          <button
-            key={i}
-            className={`${css.cell} ${
-              css["cell--" + (settings?.theme || "default")]
-            }`}
-            onClick={() => handleClick(i)}
-          >
-            {cell ? getIconComponent(cell) : null}
-          </button>
-        ))}
-      </div>
-
-      <div className={css.status}>
-        {winner
-          ? winner === "Draw"
-            ? "It's a draw!"
-            : `🏆 Winner: ${winner}`
-          : `Next: ${current}`}
-      </div>
-
-      {winner && (
-        <button className={css.reset_btn} onClick={reset}>
-          Play again
-        </button>
-      )}
-    </div>
+      <aside className={css.player}>{getIconComponent("o")}</aside>
+    </main>
   );
 };
 
 export default TicTacToeGame;
+
+// ame,
+//   age,
+//   avatarUrl,
+//   language,

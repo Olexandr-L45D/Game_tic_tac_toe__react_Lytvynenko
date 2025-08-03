@@ -1,9 +1,8 @@
-//GamePage.module.css
-import css from "./GamePage.module.css";
+import css from "./GSettingPage.module.css";
 import { useState } from "react";
 import TicTacToeGame from "../../components/TicTacToeGame/TicTacToeGame";
 
-function GamePage() {
+function GSettingPage() {
   const [showGame, setShowGame] = useState(false);
   const [settings, setSettings] = useState({ theme: "pooh" });
 
@@ -45,4 +44,4 @@ function GamePage() {
   );
 }
 
-export default GamePage;
+export default GSettingPage;

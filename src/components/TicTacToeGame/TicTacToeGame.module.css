@@ -1,126 +1,169 @@
 .game_container {
-  padding: 50px 20px 80px;
-  max-width: 380px;
+  padding: 30px 20px 50px;
+  width: 492px;
+  height: 256px;
   margin: auto;
   font-family: sans-serif;
-  background-color: #f0f0f0;
+  background: url("/src/assets/emages/Rectangle_mod.png.png") center/cover
+    no-repeat;
   border-radius: 12px;
   box-shadow: 0 0 10px #ccc;
 }
 
-/* Теми */
-.theme_space {
-  background: url("/assets/space-bg.jpg") center/cover no-repeat;
-}
-.theme_forest {
-  background: url("/assets/forest-bg.jpg") center/cover no-repeat;
-}
-
-/* Загальний фон гри */
-.theme_default {
-  background-image: url("/assets/themes/default/background.jpg");
-  background-size: cover;
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
 }
 
-.theme_pooh {
-  background-image: url("/assets/themes/pooh/background.jpg");
-  background-color: blue;
-  background-size: cover;
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
 
-.theme_ariel {
-  background-image: url("/assets/themes/ariel/background.jpg");
-  background-color: darkmagenta;
-  background-size: cover;
+.player {
+  width: 89px;
+  height: 256px;
+  margin-top: 104px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: url("/src/assets/emages/Bacground89256.png") center/cover
+    no-repeat;
 }
-.difficultySelect {
-  margin: 16px auto;
-  text-align: center;
+
+.label {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
 }
 
 .icon {
-  width: 40px;
-  height: 40px;
+  width: 60px;
+  height: 60px;
   fill: #fff;
-  width: 90%;
-  height: 90%;
   display: block;
   margin: 0 auto;
 }
 .icon-img {
-  width: 70%;
+  width: 60px;
   height: auto;
   object-fit: contain;
   display: block;
   margin: 0 auto;
 }
-
 .cell {
-  width: 100px;
-  height: 100px;
-  background-color: #fff0f5; /* ніжний фон */
-  border-radius: 50%; /* кругла форма */
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  border: none;
-  transition: transform 0.2s ease;
+  z-index: 3;
+  position: relative;
+  color: #fff;
 }
 
-.cell:hover {
-  transform: scale(1.05);
+/* При натисканні – не показувати ніякого фону */
+.cell:focus,
+.cell:active {
+  outline: none;
+  background: none;
+  box-shadow: none;
 }
-.cell--pooh {
-  background-color: #fff5cc;
+
+/* Іконки всередині клітинок – збільшити */
+.cell svg {
+  width: 60px;
+  height: 60px;
 }
-.cell--ariel {
-  background-color: #dbeeff;
-}
-.cell--dora {
-  background-color: #ffe6f0;
-}
+
 .icon-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
+  width: 60px;
+  height: 60px;
   border-radius: 50%; /* робить саме зображення круглим */
-  background-color: #ffffff;
-  padding: 4px;
 }
 
 .header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 .avatar {
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 5px;
 }
 .user_info p {
   margin: 0;
   font-size: 14px;
 }
-
+.gridWrapper {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 100px);
-  gap: 10px;
+  grid-template-columns: repeat(3, 60px);
+  grid-template-rows: repeat(3, 60px);
+  gap: 15px;
+  z-index: 3; /* Вище за лінії */
+}
+
+.gridOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 260px;
+  background: url("/src/assets/emages/Bg_pop_Gorizont.png") center/contain
+      repeat-y,
+    url("/src/assets/emages/Bg_pop_Vertical.png") center/contain repeat-x;
+  pointer-events: none;
+  z-index: 2;
+  opacity: 1;
+}
+
+.statusWrapper {
+  margin-top: 10px;
+  min-height: 30px; /* резервує місце для тексту/кнопки */
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .status {
-  margin-top: 20px;
-  font-size: 18px;
-  font-weight: bold;
+  font-size: 20px;
+  font-weight: 600;
+  color: wheat;
+  margin-bottom: 12px;
+  text-align: center;
 }
-.reset_btn {
-  margin-top: 15px;
-  margin-bottom: 3px;
-  padding: 8px 16px;
-  font-size: 1rem;
+
+.retryBtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #f7c59f;
+  border: none;
+  border-radius: 12px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.retryBtn:hover {
+  background-color: #f6ae78;
 }

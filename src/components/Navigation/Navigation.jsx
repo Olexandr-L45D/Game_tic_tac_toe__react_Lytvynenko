@@ -16,8 +16,8 @@ export const Navigation = () => {
         <NavLink to="/" className={newLinkClass}>
           Home
         </NavLink>
-        <NavLink to="/game" className={newLinkClass}>
-          Game to Tic Tac
+        <NavLink to="/gamesetting" className={newLinkClass}>
+          GameSetting
         </NavLink>
 
         {isLoggedIn && (

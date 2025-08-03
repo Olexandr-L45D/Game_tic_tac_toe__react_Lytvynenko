@@ -1,8 +1,7 @@
-import css from "./App.module.css";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { lazy, Suspense } from "react";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 const HomePage = lazy(() => import("../../pages/HomePage/HomePage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
@@ -12,7 +11,13 @@ const RegistrationPage = lazy(() =>
 const ContactsPage = lazy(() =>
   import("../../pages/ContactsPage/ContactsPage")
 );
-const GamePage = lazy(() => import("../../pages/GamePage/GamePage"));
+const TicTacToeStartPage = lazy(() =>
+  import("../../pages/TicTacToeStartPage/TicTacToeStartPage")
+);
+const GameSettingPage = lazy(() =>
+  import("../../pages/GameSettingPage/GameSettingPage")
+);
+
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage"));
 
 import { Layout } from "../Layout/Layout";
@@ -61,7 +66,8 @@ export default function App() {
             }
           />
 
-          <Route path="/game" element={<GamePage />} />
+          <Route path="/game" element={<TicTacToeStartPage />} />
+          <Route path="/gamesetting" element={<GameSettingPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
