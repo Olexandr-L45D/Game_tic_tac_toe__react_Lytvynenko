@@ -15,10 +15,10 @@ const GameSettingsModal = ({ onClose, onStart }) => {
   return (
     <div className={css.modalOverlay}>
       <div className={css.modalContent}>
-        <h2>Settings game</h2>
+        <h2 className={css.title}>Settings</h2>
         <form onSubmit={handleSubmit}>
           <label>
-            Герой:
+            Hero:
             <select value={theme} onChange={e => setTheme(e.target.value)}>
               <option value="rose">Learose</option>
               <option value="princes">Princesse</option>

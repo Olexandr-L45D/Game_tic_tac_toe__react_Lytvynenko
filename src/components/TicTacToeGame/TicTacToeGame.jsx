@@ -81,7 +81,7 @@ const TicTacToeGame = ({ settings, onEvent }) => {
 
   return (
     <main className={css.wrapper}>
-      <aside className={css.player}>
+      <aside className={css.playerLeft}>
         {getIconComponent("x")}
         <span className={css.label}>You : X</span>
       </aside>
@@ -123,7 +123,10 @@ const TicTacToeGame = ({ settings, onEvent }) => {
         </div>
       </section>
 
-      <aside className={css.player}>{getIconComponent("o")}</aside>
+      <aside className={css.playerRight}>
+        {getIconComponent("o")}
+        <span className={css.label}>PLAYER 2</span>
+      </aside>
     </main>
   );
 };
